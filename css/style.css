@@ -280,7 +280,7 @@ input:checked + .slider:before {
   font-size: 15px;
 	position: absolute;
 	display: none;
-	top: 1%;
+	top: 30%;
 	left: 16%;
 	border-radius: 10px;
 	-webkit-box-shadow: 6px 7px 26px 0px rgba(0,0,0,0.75);
