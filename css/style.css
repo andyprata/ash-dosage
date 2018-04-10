@@ -1,0 +1,354 @@
+/**************************************************/
+/* Style sheet for the ashdosage display          */
+/**************************************************/
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body{
+	position:absolute;
+	height: 98%;
+	width:99%;
+	font-family:'Helvetica Neue', sans-serif;
+	font-size:14px;
+}
+
+input{
+  font-size:14px;
+}
+
+.divtitle{
+	display: block;
+	position: absolute;
+	z-index: 8000;
+	margin-left:60px;
+	margin-top: 15px;
+	padding: 5px;
+	background-color:rgba(255,255,255,0.8);
+	border-radius: 10px;
+}
+.title {
+    font-family: 'Helvetica Neue', sans-serif;
+	font-size: 16px;
+	margin-top: 0;
+}
+.riskDisplayChoice{
+	font-size: 10px;
+	font-weight: normal;
+	display:none;
+}
+.info {
+    padding: 2px 8px;
+    font: 15px, 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+    font-size: 15px;
+    line-height: 20px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+.flight_info {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  color: black;
+}
+
+/* Change cursor when mousing over clickable layer */
+.leaflet-container {
+  cursor: crosshair !important;
+  font: 18px "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+#rows .dark {
+    background-color:#242424;
+}
+
+#rows .light {
+    background-color:white;
+}
+
+.hovertext text{
+        font-family: 'Helvetica Neue' !important;
+        font-size:13px !important;
+}
+
+/*.row div {
+  background-color: #ffffff;
+}*/
+
+#custom-handle {
+	width: 2em;
+	height: 1.6em;
+	top: 50%;
+	margin-top: -.8em;
+	text-align: center;
+	line-height: 1.6em;
+}
+
+
+#flightitle{
+	border: 0px;
+	font-size: 1.4em;
+	font-weight: 600;
+}
+
+/* css to customize Leaflet default styles  */
+.popupESPs .leaflet-popup-tip,
+.popupESPs .leaflet-popup-content-wrapper {
+    background: #ffffff;
+    /*color: #234c5e;*/
+    color: #000000;
+    font: 15px, 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+#sliderarea p{
+	margin-top:0;
+	margin-bottom:5px;
+}
+
+
+/****************************************
+ The switch - the box around the risk selector slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The risk selector slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #727683;;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #727683;;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+/*CSS3 STYLING FOR FULL SCREEN DISPLAY*/
+#content {
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+	height:inherit;
+}
+#middle_row{
+	flex-basis: 90%;
+	min-height:400px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: row;
+}
+#lower_row{
+    flex-basis: 10%;
+    flex-grow: 1;
+    min-height: 250px;
+    margin: 3px;
+    display: flex;
+    flex-direction: row;
+}
+#maparea {
+    flex-basis: 90%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+}
+#mapid {
+    flex-basis: 90%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 300px;
+    min-height:300px;
+    margin: 3px;
+}
+#sliderarea {
+    flex-basis: 10%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 300px;
+    min-height: 60px;
+	max-height: fit-content;
+    margin: 3px;
+}
+#flightdetails{
+    flex-basis: 10%;
+    min-width:500px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+#flightdetailstext{
+    flex-basis: 10%;
+    flex-grow: 1;
+    min-width: 150px;
+    min-height: 130px;
+    margin: 3px;
+		padding: 7px 3px 3px 3px;
+		border: 1px solid grey;
+		border-radius: 5px;
+}
+#devacchart{
+  flex-basis: 90%;
+  flex-grow: 1;
+	min-height: 220px;
+  /*min-width: 150px;
+  min-height: 100px;
+	margin: 3px;
+	min-width: 300px;
+  min-height: 300px;*/
+}
+#logo{
+    line-height: 10px;
+    color: #555;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    width: 200px;
+}
+.welcome{
+	padding: 20px;
+  font-size: 15px;
+	position: absolute;
+	display: none;
+	top: 1%;
+	left: 16%;
+	border-radius: 10px;
+	-webkit-box-shadow: 6px 7px 26px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 7px 26px 0px rgba(0,0,0,0.75);
+	box-shadow: 6px 7px 26px 0px rgba(0,0,0,0.75);
+	width : 65%;
+	height : content-wrapper;
+	background-color: #FFF;
+	z-index : 11000;
+}
+.welcome-iframe{
+	width: 100%;
+	height: 100%;
+	min-height: 50vh;
+	position: relative;
+
+}
+.close{
+	position: relative;
+	cursor: pointer;
+	width: content-wrapper;
+	top: 10;
+	right: 10;
+	font-weight: strong;
+	text-align: right;
+	font-size: 30px;
+}
+.survey{
+	position: absolute;
+	display: none;
+	top: 0;
+	right: 0;
+	min-width: 500px;
+	min-height: 100%;
+	z-index: 10001;
+}
+.survey-iframe{
+	width: 100%;
+	height: 100%;
+	min-height: 90vh;
+	position: relative;
+    top: -40px;
+}
+.openCloseSurvey{
+	cursor: pointer;
+    border-width: 2px;
+    border-style: inset none inset inset;
+    border-color: initial;
+    border-image: initial;
+	border-color: #ccc;
+	font-weight: strong;
+	text-align: center;
+	font-size: 30px;
+	padding: 0 0 0 0;
+	height: 40px;
+	width: 40px;
+	background-color: white;
+	display: block;
+	position: relative;
+	left: -40px;
+	top: 4px;
+}
+.bottomgraph{
+  flex-basis: 50%;
+  flex-grow: 1;
+  min-width: 150px;
+  margin: 3px;
+  padding: 7px 3px 3px 3px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}

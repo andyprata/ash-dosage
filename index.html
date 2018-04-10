@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!--Script that enables font awesome-->
+	<script src="https://use.fontawesome.com/851295a42c.js"></script>
+
+	<!--Script needed for MaxJax (enables LaTeX notation)-->
+	<script type="text/javascript" async  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_SVG">	</script>
+
+	<!-- Script needed for Mapbox maps
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+	-->
+
+	<!-- Google analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-102352441-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+	<title>Ash Dosage</title>
+
+
+	<!-- CSS -->
+	<link href="./css/style.css" rel="stylesheet">
+
+	<!-- leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+	integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+	crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+	integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+	crossorigin=""></script>
+	<script src="./js/slidercontrol.js"></script>
+	<!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /><![endif]-->
+	<script src="./js/leaflet.ajax.min.js"></script>
+
+	<!--Script needed for polylineDecorator (e.g. add airplane over the path)-->
+	<script src="./js/leaflet.polylineDecorator.js"></script>
+
+	<!--Script needed for MousePosition-->
+	<script type="text/javascript" src="./js/Leaflet.Coordinates-0.1.5.min.js"></script>
+	<link rel="stylesheet" href="./css/Leaflet.Coordinates-0.1.5.css"/>
+
+	<!--Script needed for multicolored Polyline -->
+	<script type="text/javascript" src="./js/Leaflet.MultiOptionsPolyline.min.js"></script>
+
+	<!-- jquery -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<!-- Bootstrap guided tour -->
+	<script src="./js/bootstrap-tour-standalone.min.js"></script>
+	<link href="./css/bootstrap-tour-standalone.min.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Plotly.js -->
+	<!--<script src="./js/plotly-latest.min.js"></script>-->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+	<div id="content" >
+	  <!--<div class="row">
+		  div class="col-md-12 well well-sm">
+			<div id="banner" style="height: 40px;"><img src="./img/logo-Reading.png"><span class="title">VOLCANIC ASH DOSAGE</span>
+		  </div>
+	  </div>-->
+    <!-- Put everything inside the id="rows" div to add 'background-color' to the bootstrap grid classes -->
+    <!-- Note we are curretnly using 'dark' and 'light' as defined in the style.css file -->
+
+	  <div id="middle_row" >
+		<div class="divtitle " id="togglerisk">
+			<table border="0">
+			<tr>
+				<td class="title agreement">Model Agreement </td>
+				<td><label class="switch">
+					<input type="checkbox" id="riskselected">
+					<span class="slider round"></span>
+				</label></td>
+				<td class="title risk">Risk Level
+				<div class="riskDisplayChoice" id="riskDisplayChoice"><form><input type="radio" name="riskOnMap" id="riskOnMap" checked>on Map<br>
+				<input type="radio" name="riskOnMap" id="riskOnRoute">on Route<br></form></div></td>
+			</tr>
+			</table>
+		</div>
+		  <div id="maparea">
+			<div id="mapid">
+				<div id="divriskmatrix"  width="195" height="138" class="leaflet-bottom leaflet-right info legend leaflet-control" style="display:none; z-index:9998; padding:0; margin-right:10px; margin-bottom:15px;"><div style="position:relative; margin-top:5px; margin-right: 5px; text-align:right;">Risk Matrix<br>
+				<img src="./img/riskmatrix.png"></div><!-- width="450" height="250"></div>-->
+					<canvas id="canvaslegend"  width="195" height="138" style=" z-index:9999; position:absolute; bottom:0px; left: 0px;">Your browser does not support the HTML5 canvas tag. Use a more recent browser.</canvas>
+				</div>
+        <div id="divragreementlegend"  width="195" height="138" class="leaflet-bottom leaflet-right info legend leaflet-control" style="display:none; z-index:9998; padding:0; margin-right:10px; margin-bottom:15px;"><div style="position:relative; margin-top:5px; margin-right: 5px; text-align:right;">C<sub>ash</sub> > 0.2 mg m<sup>-3</sup><br>
+				<img src="./img/agreement_colourbar_transparent.png " width="110" height="110"></div><!-- width="450" height="250"></div>-->
+					<canvas id="canvaslegend"  width="195" height="138" style=" z-index:9999; position:absolute; bottom:0px; left: 0px;">Your browser does not support the HTML5 canvas tag. Use a more recent browser.</canvas>
+				</div>
+
+			</div>
+			<div id="sliderarea">
+				<p>
+					<label for="amount">Time:</label>
+					<input type="text" id="slidertime" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<label for="amount">| Altitude: FL350–FL550 | Copyright © University of Reading 2017-2018</label>
+				</p>
+				<div id="slider">
+						<div id="custom-handle" class="ui-slider-handle"></div>
+				</div>
+			</div>
+		  </div>
+		<div id="flightdetails">
+          <div id="flightdetailstext">
+		    <div id="logo">
+				<center><img src="./img/logo-vdart.png" width="172" height="60"></center>
+				<center><b>V</b>olcanic <b>D</b>osage <b>A</b>nd <b>R</b>isk <b>T</b>ool</center>
+      </div>
+            <div id="flightinformation">
+						<center><div style="border: 0px; font-size: 18px; font-weight: 600;">Flight information</div></center>
+            <br>
+            Route type = <input type="text" style="border: 0px;" id="flighttitle" value=""><br>
+            Flight time [h] = <input type="text" style="border: 0px;" id="ftimebox" value="" size="4"><br>
+					  Time penalty [h] = +<input type="text" style="border: 0px;" id="timepenaltybox" value="" size="4"><br>
+					  Dosage [g m<sup>-3</sup> s] = <input type="text" style="border: 0px;" id="dsgeMaxbox" value="" size="15"><br>
+					  Exposure time [h] = <input type="text" style="border: 0px;" id="expoDurbox" value="" size="20"><br>
+					  Peak concentration [mg m<sup>-3</sup>] = <input type="text" style="border: 0px;" id="concMaxbox" value="" size="15"><br>
+            </div>
+            <hr>
+            <div id="devacchart"><!-- Enter text here to describe ashlimit plot--></div>
+          </div>
+        </div>
+    </div>
+
+	<div id="lower_row" >
+		<div id="crosssection" class="bottomgraph"></div>
+		<div id="ashdosage" class="bottomgraph"></div>
+    </div>
+	<div id="survey" class="survey">
+		<div class="openCloseSurvey" id="openCloseSurvey">X</div>
+
+    <!-- <iframe name="template-frame" id="myFrame" class="survey-iframe" src="https://www.surveymonkey.co.uk/r/BXZZGX9"></iframe>-->
+    <iframe name="template-frame" id="myFrame" class="survey-iframe" src="https://forms.office.com/Pages/ResponsePage.aspx?id=xDv6T_zswEiQgPXkP_kOX7IHuOMQLZpMjhvyS_ddhUJUMFI3S1BBMU5PQVFUWVhMWUo4QTFUVllBQy4u"></iframe>
+    </div>
+
+	<div id="welcome" class="welcome">
+		<div class="close" id="closewelcome">X</div>
+		<h1>Welcome to the Volcanic Dosage And Risk Tool (VDART)</h1>
+		<p>This questionnaire has been designed to understand how aviation industry stakeholders use scientific information to make decisions when responding to a volcanic eruption event.
+      VDART is a demonstration tool that shows how ensemble-based forecasts of ash concentration and dosage can be used to make fast and robust flight-planning decisions.
+      The tool was developed in collaboration and consultation with aviation industry regulators, operators, engine manufacturers and the UK Met Office and takes advantage of interactive data visualisation to communicate uncertainty information.
+      <br><br>Please fill in your information in the below form. Once you have submitted this form close the window by pressing 'X' in the top right corner. This will then launch a guided tour that will explain each component of VDART.</p>
+      		<iframe name="template-frame" id="myFrame" scrolling="yes" class="welcome-iframe" src="https://www.surveymonkey.co.uk/r/WPCC39J"></iframe>
+    </div>
+</div>
+
+
+
+
+
+<script src="./js/datainit.js"></script>
+<!-- LOAD DATA -->
+<script src="./data/timesteps.js"></script>
+<script src="./data/flightsdata.js"></script>
+<!--<script src="./data/ashdata.js"></script>-->
+<script src="./data/control.js"></script>
+<script src="./data/agreementdata.js"></script>
+<script src="./data/riskcrossx.js"></script>
+<script src="./data/agreementcrossx.js"></script>
+<script src="./data/wind.js"></script>
+<script src="./data/risk.js"></script>
+<!--<script src="./data/agreement.js"></script>-->
+
+<!-- LOAD DISPLAY SCRIPT -->
+<script src="./js/functions.js"></script>
+<script src="./js/main.js"></script>
+
+
+<!-- DEFINE THE GUIDED TOUR -->
+<script>
+//See http://bootstraptour.com/
+// Instance the tour
+var tour = new Tour({
+	storage: false,
+	steps: [
+	{
+  element: "#mapid",
+  title: "Interactive map",
+  content: "Dispersion model output and air-route data are displayed here. You can click, drag and zoom the map to navigate to a point of interest.",
+  backdrop: true,
+  },
+  {
+  element: ".leaflet-control-layers-toggle",
+  placement: "bottom",
+  title: "Layer selector",
+  content: "Here you can select different map layers from a dropdown menu by clicking checkboxes on and off.",
+  backdrop: true,
+  },
+  {
+	element: "#togglerisk",
+	title: "Display mode selector",
+	content: "Here you can switch between Model Agreement mode (which displays the confidence in ash concentration and location in %) and Risk Level mode (which displays the ash concentration and dosage risk calculated from a risk matrix).",
+	backdrop: true,
+	},
+	{
+	element: "#sliderarea",
+	title: "Time slider",
+	content: "Clicking and dragging the time slider will animate the layers displayed on the map. Note that the current forecast time is displayed above the slider (in orange text) and the time steps are 6 h apart.",
+	backdrop: true,
+  },
+  {
+  element: "#flightinformation",
+  placement: "left",
+  title: "Flight information panel",
+  content: "Here information about the currently selected air-route is shown. The numbers respresent the median of ensemble and the numbers in square brackets respresent the minimum and maximum of the ensemble.",
+  backdrop: true,
+  },
+  {
+  element: "#devacchart",
+  title: "DEvAC chart",
+  placement: "left",
+  content: "Data for the currently selected air-route is also shown on the Duration of Exposure vs. Ash Concentration (DEvAC) chart. Errors bars indicate the maximum and minimum values of the ensemble and coloured lines indicate lines of constant dosage.",
+  backdrop: true,
+  },
+  {
+  element: "#crosssection",
+  title: "Vertical cross-section panel",
+  placement: "top",
+  content: "Here the vertical cross-section for the currently selected air-route is shown. When an air-route is selected, red lines indicate the altitude region represented on the map.",
+  backdrop: true,
+  },
+  {
+  element: "#ashdosage",
+  placement: "top",
+  title: "Along-flight information panel",
+  content: "This panel shows the ash concentration and dosage calculated along the air-route displayed on the map. Shaded regions correspond to the minimum and maximum values of the ensemble and the lines correspond to the ensemble median.",
+  backdrop: true,
+  },
+  {
+  element: "#openCloseSurvey",
+  placement: "left",
+  title: "Tour finished",
+  content: "You've now finished the tour. Click 'End tour' and then click this tab to begin the interactive questionnaire.",
+  backdrop: true,
+  },
+]});
+
+// Initialize the tour
+tour.init();
+
+</script>
+
+<!-- SURVEY AND WELCOME DISPLAY -->
+<script>
+	if (!getParameter("notour")){
+		$('#welcome').show();
+		$('#closewelcome').click(function(){
+			$('#welcome').hide();
+			$('#survey').show();
+			tour.start();
+		});
+		$('#openCloseSurvey').click(function(){
+			openCloseSurvey();
+		});
+	}
+</script>
+
+</body>

@@ -1,0 +1,119 @@
+risk[0] = new Risk;
+risk[0].id = 0;
+risk[0].active = true;
+risk[0].image = 'UV_C1_T1_201701010900.png';
+risk[0].bounds = [[80, -120], [0, 80]];
+risk[0].timeid = 0;
+risk[0].x = [-30, -30, -30];
+risk[0].y = [53,  56,  63];
+risk[0].z = [1,  2,  3];
+
+risk[1] = new Risk;
+risk[1].id = 0;
+risk[1].active = false;
+risk[1].image = 'UV_C1_T2_201701011500.png';
+risk[1].bounds = [[80, -120], [0, 80]];
+risk[1].timeid = 1;
+risk[1].x = [-40, -40, -40];
+risk[1].y = [53,  56,  63];
+risk[1].z = [4,  5,  6];
+
+risk[2] = new Risk;
+risk[2].id = 0;
+risk[2].active = false;
+risk[2].image = 'UV_C1_T3_201701012100.png';
+risk[2].bounds = [[80, -120], [0, 80]];
+risk[2].timeid = 2;
+risk[2].x = [-40, -40, -40];
+risk[2].y = [53,  56,  63];
+risk[2].z = [4,  5,  6];
+
+risk[3] = new Risk;
+risk[3].id = 0;
+risk[3].active = false;
+risk[3].image = 'UV_C1_T4_201701020300.png';
+risk[3].bounds = [[80, -120], [0, 80]];
+risk[3].timeid = 3;
+risk[3].x = [-40, -40, -40];
+risk[3].y = [53,  56,  63];
+risk[3].z = [4,  5,  6];
+
+risk[4] = new Risk;
+risk[4].id = 0;
+risk[4].active = false;
+risk[4].image = 'UV_C1_T5_201701020900.png';
+risk[4].bounds = [[80, -120], [0, 80]];
+risk[4].timeid = 4;
+risk[4].x = [-40, -40, -40];
+risk[4].y = [53,  56,  63];
+risk[4].z = [4,  5,  6];
+
+risk[5] = new Risk;
+risk[5].id = 0;
+risk[5].active = false;
+risk[5].image = 'UV_C1_T6_201701021500.png';
+risk[5].bounds = [[80, -120], [0, 80]];
+risk[5].timeid = 5;
+risk[5].x = [-40, -40, -40];
+risk[5].y = [53,  56,  63];
+risk[5].z = [4,  5,  6];
+
+risk[6] = new Risk;
+risk[6].id = 0;
+risk[6].active = false;
+risk[6].image = 'UV_C1_T7_201701022100.png';
+risk[6].bounds = [[80, -120], [0, 80]];
+risk[6].timeid = 6;
+risk[6].x = [-40, -40, -40];
+risk[6].y = [53,  56,  63];
+risk[6].z = [4,  5,  6];
+
+risk[7] = new Risk;
+risk[7].id = 0;
+risk[7].active = false;
+risk[7].image = 'UV_C1_T8_201701030300.png';
+risk[7].bounds = [[80, -120], [0, 80]];
+risk[7].timeid = 7;
+risk[7].x = [-40, -40, -40];
+risk[7].y = [53,  56,  63];
+risk[7].z = [4,  5,  6];
+
+risk[8] = new Risk;
+risk[8].id = 0;
+risk[8].active = false;
+risk[8].image = 'UV_C1_T9_201701030900.png';
+risk[8].bounds = [[80, -120], [0, 80]];
+risk[8].timeid = 8;
+risk[8].x = [-40, -40, -40];
+risk[8].y = [53,  56,  63];
+risk[8].z = [4,  5,  6];
+
+risk[9] = new Risk;
+risk[9].id = 0;
+risk[9].active = false;
+risk[9].image = 'UV_C1_T10_201701031500.png';
+risk[9].bounds = [[80, -120], [0, 80]];
+risk[9].timeid = 9;
+risk[9].x = [-40, -40, -40];
+risk[9].y = [53,  56,  63];
+risk[9].z = [4,  5,  6];
+
+risk[10] = new Risk;
+risk[10].id = 0;
+risk[10].active = false;
+risk[10].image = 'UV_C1_T11_201701032100.png';
+risk[10].bounds = [[80, -120], [0, 80]];
+risk[10].timeid = 10;
+risk[10].x = [-40, -40, -40];
+risk[10].y = [53,  56,  63];
+risk[10].z = [4,  5,  6];
+
+risk[11] = new Risk;
+risk[11].id = 0;
+risk[11].active = true;
+risk[11].image = 'UV_C1_T12_201701040300.png';
+risk[11].bounds = [[80, -120], [0, 80]];
+risk[11].timeid = 11;
+risk[11].x = [-40, -40, -40];
+risk[11].y = [53,  56,  63];
+risk[11].z = [4,  5,  6];
