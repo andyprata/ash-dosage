@@ -192,7 +192,7 @@ input:checked + .slider:before {
 
 /*CSS3 STYLING FOR FULL SCREEN DISPLAY*/
 #content {
-    flex-basis: 100%;
+    flex-basis: calc( 100% - 400px);
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;
@@ -323,6 +323,7 @@ input:checked + .slider:before {
 	min-height: 90vh;
 	position: relative;
     top: -40px;
+	border-color: #004b8b;
 }
 .openCloseSurvey{
 	cursor: pointer;
@@ -330,14 +331,15 @@ input:checked + .slider:before {
     border-style: inset none inset inset;
     border-color: initial;
     border-image: initial;
-	border-color: #ccc;
+	border-color: #004b8b;
 	font-weight: strong;
 	text-align: center;
 	font-size: 30px;
 	padding: 0 0 0 0;
 	height: 40px;
 	width: 40px;
-	background-color: white;
+	background-color: #004b8b;
+	color: white;
 	display: block;
 	position: relative;
 	left: -40px;
