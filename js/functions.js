@@ -618,14 +618,14 @@ function displayflightparam(displayedflight){
 	//Note: using the .toPrecision() method to display these values
 	$("#ftimebox").val(flights[displayedflight].flightduration.toFixed(2));
 	$("#timepenaltybox").val(flights[displayedflight].timepenalty.toFixed(2));
-  //var dsgeLoMax = Math.max(...flights[displayedflight].dsgeLo);
-  //var dsgeHiMax = Math.max(...flights[displayedflight].dsgeHi);
+  //var dsgeLoMax = Math.max(flights[displayedflight].dsgeLo);
+  //var dsgeHiMax = Math.max(flights[displayedflight].dsgeHi);
 	//$("#dsgeMaxbox").val(flights[displayedflight].dsgeMax.toFixed(1)+" ["+dsgeLoMax.toFixed(1)+", "+dsgeHiMax.toFixed(1)+"]");
 	//$("#dsgeMaxbox").val(dsgeLoMax.toFixed(2)+"–"+dsgeHiMax.toFixed(2));
 
 	var dsgeMin = flights[displayedflight].dsgeLower;
 	var dsgeMax = flights[displayedflight].dsgeUpper;
-	var dsgeMedian = Math.max(...flights[displayedflight].dosage);
+	var dsgeMedian = Math.max(flights[displayedflight].dosage);
 	//$("#dsgeMaxbox").val(dsgeMin.toFixed(2)+"–"+dsgeMax.toFixed(2));
 	$("#dsgeMaxbox").val(dsgeMedian.toFixed(0)+" ["+dsgeMin.toFixed(0)+", "+dsgeMax.toFixed(0)+"]");
 
@@ -636,14 +636,14 @@ function displayflightparam(displayedflight){
 	//Note this is different to the concMax value: concMax = dsgeMax / expoDur
 	//Here we want to return the maximum (peak) value of the concentraiton array.
 	//Let's call it peakCon:
-	//var peakCon = Math.max(...flights[displayedflight].conc);
-  //var concLoMax = Math.max(...flights[displayedflight].concLo);
-  //var concHiMax = Math.max(...flights[displayedflight].concHi);
+	//var peakCon = Math.max(flights[displayedflight].conc);
+  //var concLoMax = Math.max(flights[displayedflight].concLo);
+  //var concHiMax = Math.max(flights[displayedflight].concHi);
 	//$("#concMaxbox").val(peakCon.toFixed(1)+" ["+concLoMax.toFixed(1)+", "+concHiMax.toFixed(1)+"]");
 	//$("#concMaxbox").val(concLoMax.toFixed(2)+"–"+concHiMax.toFixed(2));
 	var peakMin = flights[displayedflight].peakLower; // 'the peak of the minimum'
 	var peakMax = flights[displayedflight].peakUpper; // 'the peak of the maximum'
-	var peakMedian = Math.max(...flights[displayedflight].conc); // 'the peak of the Median'
+	var peakMedian = Math.max(flights[displayedflight].conc); // 'the peak of the Median'
 	//$("#concMaxbox").val(peakMin.toFixed(2)+"–"+peakMax.toFixed(2));
 	$("#concMaxbox").val(peakMedian.toFixed(0)+" ["+peakMin.toFixed(0)+", "+peakMax.toFixed(0)+"]");
 }
@@ -848,7 +848,7 @@ function displaycrosssection(flightid){
 
 	//Add horizontal line, representing the flight altitude
 	flightheight = {  //Global variable as it is used in other functions
-		x : [0,Math.round(Math.max(...datacrossx[flightid].x))],
+		x : [0,Math.round(Math.max(datacrossx[flightid].x))],
 		y : [flights[flightid].altitude,flights[flightid].altitude],
 		mode: 'lines',
 		hoverinfo: 'none', // disable hoverinfo
@@ -860,7 +860,7 @@ function displaycrosssection(flightid){
 
 	//Display line for upper level
 	FLLower = {
-		x: [0,Math.round(Math.max(...datacrossx[flightid].x))],
+		x: [0,Math.round(Math.max(datacrossx[flightid].x))],
 		y: [350, 350],
 		fill: 'tonext', // 'none'
 		//type: 'scatter',
@@ -869,7 +869,7 @@ function displaycrosssection(flightid){
 	};
 	//Display line for lower level
 	FLUpper = {
-		x: [0,Math.round(Math.max(...datacrossx[flightid].x))],//Math.round(Math.max(...datacrossx[flightid].x))],
+		x: [0,Math.round(Math.max(datacrossx[flightid].x))],//Math.round(Math.max(datacrossx[flightid].x))],
 		y: [550, 550],
 		fill: 'tonext', // 'tonexty'
 		type: 'scatter',
@@ -1106,7 +1106,7 @@ function updatecrosssection(displayedflight){
 
 	//Display line for upper level
 	FLLower = {
-		x: [0,Math.round(Math.max(...datacrossx[displayedflight].x))],
+		x: [0,Math.round(Math.max(datacrossx[displayedflight].x))],
 		y: [350, 350],
 		fill: 'tonext',
 		mode: 'lines',
@@ -1114,7 +1114,7 @@ function updatecrosssection(displayedflight){
 	};
 	//Display line for lower level
 	FLUpper = {
-		x: [0,Math.round(Math.max(...datacrossx[displayedflight].x))],
+		x: [0,Math.round(Math.max(datacrossx[displayedflight].x))],
 		y: [550, 550],
 		fill: 'tonext',
 		type: 'scatter',
