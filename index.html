@@ -89,6 +89,7 @@
 
 	  <div id="middle_row" >
 		<div class="divtitle " id="togglerisk">
+			<div id="helpMode" class="help"></div>
 			<table border="0">
 			<tr>
 				<td class="title agreement">Model Agreement </td>
@@ -104,17 +105,18 @@
 		</div>
 		  <div id="maparea">
 			<div id="mapid">
+				<div id="helpMap" class="help"></div>
 				<div id="divriskmatrix"  width="195" height="138" class="leaflet-bottom leaflet-right info legend leaflet-control" style="display:none; z-index:9998; padding:0; margin-right:10px; margin-bottom:15px;"><div style="position:relative; margin-top:5px; margin-right: 5px; text-align:right;">Risk Matrix<br>
 				<img src="./img/riskmatrix.png"></div><!-- width="450" height="250"></div>-->
 					<canvas id="canvaslegend"  width="195" height="138" style=" z-index:9999; position:absolute; bottom:0px; left: 0px;">Your browser does not support the HTML5 canvas tag. Use a more recent browser.</canvas>
 				</div>
-        <div id="divragreementlegend"  width="195" height="138" class="leaflet-bottom leaflet-right info legend leaflet-control" style="display:none; z-index:9998; padding:0; margin-right:10px; margin-bottom:15px;"><div style="position:relative; margin-top:5px; margin-right: 5px; text-align:right;">C<sub>ash</sub> > 0.2 mg m<sup>-3</sup><br>
+				<div id="divragreementlegend"  width="195" height="138" class="leaflet-bottom leaflet-right info legend leaflet-control" style="display:none; z-index:9998; padding:0; margin-right:10px; margin-bottom:15px;"><div style="position:relative; margin-top:5px; margin-right: 5px; text-align:right;">C<sub>ash</sub> > 0.2 mg m<sup>-3</sup><br>
 				<img src="./img/agreement_colourbar_transparent.png " width="110" height="110"></div><!-- width="450" height="250"></div>-->
 					<canvas id="canvaslegend"  width="195" height="138" style=" z-index:9999; position:absolute; bottom:0px; left: 0px;">Your browser does not support the HTML5 canvas tag. Use a more recent browser.</canvas>
 				</div>
-
 			</div>
 			<div id="sliderarea">
+				<div id="helpSlider" class="help"></div>
 				<p>
 					<label for="amount">Time:</label>
 					<input type="text" id="slidertime" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -132,29 +134,32 @@
 				<center><b>V</b>olcanic <b>D</b>osage <b>A</b>nd <b>R</b>isk <b>T</b>ool</center>
       </div>
             <div id="flightinformation">
-						<center><div style="border: 0px; font-size: 18px; font-weight: 600;">Flight information</div></center>
-            <br>
-            Route type = <input type="text" style="border: 0px;" id="flighttitle" value=""><br>
-            Flight time [h] = <input type="text" style="border: 0px;" id="ftimebox" value="" size="4"><br>
-					  Time penalty [h] = +<input type="text" style="border: 0px;" id="timepenaltybox" value="" size="4"><br>
-					  Dosage [g m<sup>-3</sup> s] = <input type="text" style="border: 0px;" id="dsgeMaxbox" value="" size="15"><br>
-					  Exposure time [h] = <input type="text" style="border: 0px;" id="expoDurbox" value="" size="20"><br>
-					  Peak concentration [mg m<sup>-3</sup>] = <input type="text" style="border: 0px;" id="concMaxbox" value="" size="15"><br>
+				<div id="helpFlightInfo" class="help bottom"></div>
+				<center><div style="border: 0px; font-size: 18px; font-weight: 600;">Flight information</div></center>
+				<br>
+				Route type = <input type="text" style="border: 0px;" id="flighttitle" value=""><br>
+				Flight time [h] = <input type="text" style="border: 0px;" id="ftimebox" value="" size="4"><br>
+				Time penalty [h] = +<input type="text" style="border: 0px;" id="timepenaltybox" value="" size="4"><br>
+				Dosage [g m<sup>-3</sup> s] = <input type="text" style="border: 0px;" id="dsgeMaxbox" value="" size="15"><br>
+				Exposure time [h] = <input type="text" style="border: 0px;" id="expoDurbox" value="" size="20"><br>
+				Peak concentration [mg m<sup>-3</sup>] = <input type="text" style="border: 0px;" id="concMaxbox" value="" size="15"><br>
             </div>
             <hr>
-            <div id="devacchart"><!-- Enter text here to describe ashlimit plot--></div>
+            <div id="devacchart">
+				<div id="helpDevacChart" class="help"></div>
+			</div>
           </div>
         </div>
     </div>
 
 	<div id="lower_row" >
-		<div id="crosssection" class="bottomgraph"></div>
-		<div id="ashdosage" class="bottomgraph"></div>
+		<div id="crosssection" class="bottomgraph"><div id="helpCrossSection" class="help"></div></div>
+		<div id="ashdosage" class="bottomgraph"><div id="helpAlongFlight" class="help"></div></div>
     </div>
 
 
 	<div id="welcome" class="welcome">
-		<div class="close" id="closewelcome">X</div>
+		<table border="0" width="100%"><tr><td><img src="./img/logo-vdart.png" width="172" height="60"></td><td><div class="close" id="closewelcome">X</div></td></tr></table>
 		<h1>Welcome to the Volcanic Dosage And Risk Tool (VDART)</h1>
 		<p>This questionnaire has been designed to understand how aviation industry stakeholders use scientific information to make decisions when responding to a volcanic eruption event.
       VDART is a demonstration tool that shows how ensemble-based forecasts of ash concentration and dosage can be used to make fast and robust flight-planning decisions.
@@ -198,65 +203,72 @@ var tour = new Tour({
 	storage: false,
 	steps: [
 	{
-  element: "#mapid",
-  title: "Interactive map",
-  content: "Dispersion model output and air-route data are displayed here. You can click, drag and zoom the map to navigate to a point of interest.",
-  backdrop: true,
-  },
-  {
-  element: ".leaflet-control-layers-toggle",
-  placement: "bottom",
-  title: "Layer selector",
-  content: "Here you can select different map layers from a dropdown menu by clicking checkboxes on and off.",
-  backdrop: true,
-  },
-  {
+	element: "#mapid",
+	title: "Interactive map",
+	content: textMap,
+	backdrop: true,
+	},
+	{
+	element: ".leaflet-control-layers-toggle",
+	placement: "bottom",
+	title: "Layer selector",
+	content: textLayers,
+	backdrop: true,
+	},
+	{
 	element: "#togglerisk",
 	title: "Display mode selector",
-	content: "Here you can switch between Model Agreement mode (which displays the confidence in ash concentration and location in %) and Risk Level mode (which displays the ash concentration and dosage risk calculated from a risk matrix).",
+	content: textMode,
 	backdrop: true,
 	},
 	{
 	element: "#sliderarea",
 	title: "Time slider",
-	content: "Clicking and dragging the time slider will animate the layers displayed on the map. Note that the current forecast time is displayed above the slider (in orange text) and the time steps are 6 h apart.",
+	content: textSlider,
 	backdrop: true,
-  },
-  {
-  element: "#flightinformation",
-  placement: "left",
-  title: "Flight information panel",
-  content: "Here information about the currently selected air-route is shown. The numbers respresent the median of ensemble and the numbers in square brackets respresent the minimum and maximum of the ensemble.",
-  backdrop: true,
-  },
-  {
-  element: "#devacchart",
-  title: "DEvAC chart",
-  placement: "left",
-  content: "Data for the currently selected air-route is also shown on the Duration of Exposure vs. Ash Concentration (DEvAC) chart. Errors bars indicate the maximum and minimum values of the ensemble and coloured lines indicate lines of constant dosage.",
-  backdrop: true,
-  },
-  {
-  element: "#crosssection",
-  title: "Vertical cross-section panel",
-  placement: "top",
-  content: "Here the vertical cross-section for the currently selected air-route is shown. When an air-route is selected, red lines indicate the altitude region represented on the map.",
-  backdrop: true,
-  },
-  {
-  element: "#ashdosage",
-  placement: "top",
-  title: "Along-flight information panel",
-  content: "This panel shows the ash concentration and dosage calculated along the air-route displayed on the map. Shaded regions correspond to the minimum and maximum values of the ensemble and the lines correspond to the ensemble median.",
-  backdrop: true,
-  },
-  {
-  element: "#openCloseSurvey",
-  placement: "left",
-  title: "Tour finished",
-  content: "You've now finished the tour. Click 'End tour' and then click this tab to begin the interactive questionnaire.",
-  backdrop: true,
-  },
+	},
+	{
+	element: "#flightinformation",
+	placement: "left",
+	title: "Flight information panel",
+	content: textFlightInfo,
+	backdrop: true,
+	},
+	{
+	element: "#devacchart",
+	title: "DEvAC chart",
+	placement: "left",
+	content: textDevacChart,
+	backdrop: true,
+	},
+	{
+	element: "#crosssection",
+	title: "Vertical cross-section panel",
+	placement: "top",
+	content: textCrossSection,
+	backdrop: true,
+	},
+	{
+	element: "#ashdosage",
+	placement: "top",
+	title: "Along-flight information panel",
+	content: textAlongFlight,
+	backdrop: true,
+	},
+	{
+	element: "#helpMode",
+	placement: "right",
+	title: "Help",
+	content: "You can always hover the help icons to retrieve this information.",
+	backdrop: true,
+	},
+	{
+	element: "#openCloseSurvey",
+	placement: "left",
+	title: "Tour finished",
+	content: "You've now finished the tour. Click 'End tour' and then click this tab to begin the interactive questionnaire.",
+	backdrop: true,
+	},
 ]});
 
 // Initialize the tour

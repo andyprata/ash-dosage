@@ -16,6 +16,19 @@ Last edit: 14/3/2018
 //****************************************************
 //INITIALIZE VARIABLES
 //****************************************************
+
+//Define help text to be used as div title and in the guided tour -->
+var textMap = "Dispersion model output and air-route data are displayed here. You can click, drag and zoom the map to navigate to a point of interest.";
+var textLayers = "Here you can select different map layers from a dropdown menu by clicking checkboxes on and off.";
+var textMode = "Here you can switch between Model Agreement mode (which displays the confidence in ash concentration and location in %) and Risk Level mode (which displays the ash concentration and dosage risk calculated from a risk matrix).";
+var textSlider = "Clicking and dragging the time slider will animate the layers displayed on the map. Note that the current forecast time is displayed above the slider (in orange text) and the time steps are 6 h apart.";
+var textFlightInfo = "Here information about the currently selected air-route is shown. The numbers respresent the median of ensemble and the numbers in square brackets respresent the minimum and maximum of the ensemble.";
+var textDevacChart = "Data for the currently selected air-route is also shown on the Duration of Exposure vs. Ash Concentration (DEvAC) chart. Errors bars indicate the maximum and minimum values of the ensemble and coloured lines indicate lines of constant dosage.";
+var textCrossSection = "Here the vertical cross-section for the currently selected air-route is shown. When an air-route is selected, red lines indicate the altitude region represented on the map.";
+var textAlongFlight = "This panel shows the ash concentration and dosage calculated along the air-route displayed on the map. Shaded regions correspond to the minimum and maximum values of the ensemble and the lines correspond to the ensemble median.";
+
+
+
 var displayedflight = 0; //current flight path to highlight (others will be grayed)
 var activlayer = 0;
 //var ashid = 0; //ID of the ash layer to display. Use an id in case there are several layers for one time step. So it can be independent from time steps and flight paths.
@@ -68,6 +81,8 @@ var ctx = c.getContext("2d");
 var risklegendcoordx = [93,93,93,132,132,171,132,171,171];
 var risklegendcoordy = [82,50,18,82,50,82,18,50,18]
 
+
+
 //****************************************************
 //SELECT TIME TO DISPLAY
 //****************************************************
@@ -88,8 +103,21 @@ $(document).ready(function(){
     displayflightparam(displayedflight);
 	window.setTimeout(function(){
 		openCloseSurvey();
-	}, 5000);
+	}, 1000);
 });
+
+//****************************************************
+//ADD DESCRIPTIONS TO THE DIVs (same as guided tour)
+//****************************************************
+$('.leaflet-control-layers').append('<div id="helpLayers" class="help"></div>');
+$('#helpMap').attr('title',textMap);
+$('#helpLayers').attr('title',textLayers);
+$('#helpMode').attr('title',textMode);
+$('#helpSlider').attr('title',textSlider);
+$('#helpFlightInfo').attr('title',textFlightInfo);
+$('#helpDevacChart').attr('title',textDevacChart);
+$('#helpCrossSection').attr('title',textCrossSection);
+$('#helpAlongFlight').attr('title',textAlongFlight);
 
 
 //****************************************************

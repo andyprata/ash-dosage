@@ -73,6 +73,27 @@ input{
   color: black;
 }
 
+.help {
+	color: blue;
+    display: block;
+    width: 15px;
+	height: 15px;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+	z-index: 1100;
+	background: url('../img/question.png') no-repeat center;
+		-webkit-background-size: contain;
+		-moz-background-size: contain;
+		-o-background-size: contain;
+		background-size: contain;
+}
+.bottom{
+    top: auto;
+	bottom: 5px;
+}
+
 /* Change cursor when mousing over clickable layer */
 .leaflet-container {
   cursor: crosshair !important;
@@ -238,6 +259,7 @@ input:checked + .slider:before {
     min-height: 60px;
 	max-height: fit-content;
     margin: 3px;
+	position: relative;
 }
 #flightdetails{
     flex-basis: 10%;
@@ -245,6 +267,10 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+	position: relative;
+}
+#flightinformation{
+	position: relative;
 }
 #flightdetailstext{
     flex-basis: 10%;
@@ -252,19 +278,20 @@ input:checked + .slider:before {
     min-width: 150px;
     min-height: 130px;
     margin: 3px;
-		padding: 7px 3px 3px 3px;
-		border: 1px solid grey;
-		border-radius: 5px;
+	padding: 7px 3px 3px 3px;
+	border: 1px solid grey;
+	border-radius: 5px;
 }
 #devacchart{
-  flex-basis: 90%;
-  flex-grow: 1;
+	flex-basis: 90%;
+	flex-grow: 1;
 	min-height: 220px;
-  /*min-width: 150px;
-  min-height: 100px;
+	/*min-width: 150px;
+	min-height: 100px;
 	margin: 3px;
 	min-width: 300px;
-  min-height: 300px;*/
+	min-height: 300px;*/
+	position: relative;
 }
 #logo{
     line-height: 10px;
@@ -346,11 +373,12 @@ input:checked + .slider:before {
 	top: 4px;
 }
 .bottomgraph{
-  flex-basis: 50%;
-  flex-grow: 1;
-  min-width: 150px;
-  margin: 3px;
-  padding: 7px 3px 3px 3px;
-  border: 1px solid grey;
-  border-radius: 5px;
+	flex-basis: 50%;
+	flex-grow: 1;
+	min-width: 150px;
+	margin: 3px;
+	padding: 7px 3px 3px 3px;
+	border: 1px solid grey;
+	border-radius: 5px;
+	position: relative;
 }
