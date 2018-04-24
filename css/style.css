@@ -89,7 +89,7 @@ input{
 		-o-background-size: contain;
 		background-size: contain;
 }
-.bottom{
+.ash-bottom{
     top: auto;
 	bottom: 5px;
 }
